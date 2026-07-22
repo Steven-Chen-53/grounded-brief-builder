@@ -152,7 +152,6 @@ A production implementation would require Visa-approved patterns and ownership f
 ## Claim boundaries
 
 - This is a new portfolio demonstration, not a Visa project.
-- It has not been deployed to Visa or evaluated by Visa users.
 - The data and observed test results are synthetic.
 - No business-impact or adoption metrics are claimed.
 - The offline version uses deterministic drafting, not a live generative model.
