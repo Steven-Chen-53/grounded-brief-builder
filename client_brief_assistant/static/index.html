@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Synthetic, evidence-grounded client brief workflow demonstration." />
+    <title>Grounded Brief Builder</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Grounded Brief Builder home">
+        <span class="brand-mark" aria-hidden="true">GB</span>
+        <span><strong>Grounded Brief Builder</strong><small>Evidence before generation</small></span>
+      </a>
+      <span class="demo-pill">Synthetic demonstration</span>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">AI-assisted workflow MVP</p>
+          <h1>Turn scattered client context into a review-ready brief.</h1>
+          <p class="hero-copy">Retrieve evidence, expose conflicts, ask for what is missing, and keep a human in control before anything leaves the workflow.</p>
+        </div>
+        <aside class="principles" aria-label="Design principles">
+          <span>01</span><p><strong>Grounded</strong><br />Every drafted fact points to a source.</p>
+          <span>02</span><p><strong>Honest</strong><br />Missing or conflicting information stays visible.</p>
+          <span>03</span><p><strong>Controlled</strong><br />Human approval is required for export.</p>
+        </aside>
+      </section>
+
+      <section class="workspace">
+        <nav class="steps" aria-label="Workflow steps">
+          <span class="active">1. Request</span><span>2. Evidence</span><span>3. Draft</span><span>4. Review</span>
+        </nav>
+
+        <form id="request-form" class="request-card">
+          <div class="field">
+            <label for="client-name">Client name</label>
+            <input id="client-name" name="client_name" list="client-options" value="Northstar Retail" maxlength="120" required />
+            <datalist id="client-options"></datalist>
+          </div>
+          <div class="field goal-field">
+            <label for="engagement-goal">Engagement goal</label>
+            <textarea id="engagement-goal" name="engagement_goal" maxlength="600" required>Prepare an executive brief explaining regional sales performance and decisions needed for the next quarterly review.</textarea>
+          </div>
+          <button id="analyze-button" class="primary-button" type="submit">Build grounded draft</button>
+        </form>
+
+        <div id="message" class="message" role="status" aria-live="polite"></div>
+
+        <section id="results" class="results hidden" aria-live="polite">
+          <div class="summary-grid">
+            <article class="metric"><span id="evidence-count">0</span><small>client sources used</small></article>
+            <article class="metric"><span id="missing-count">0</span><small>missing fields</small></article>
+            <article class="metric"><span id="conflict-count">0</span><small>conflicts to resolve</small></article>
+            <article class="metric status-metric"><span id="review-status">Needs review</span><small>workflow status</small></article>
+          </div>
+
+          <div class="two-column">
+            <section class="panel">
+              <div class="section-heading"><div><p class="eyebrow">Retrieved context</p><h2>Evidence and source health</h2></div><button class="text-button" id="toggle-evidence" type="button">Hide evidence</button></div>
+              <div id="evidence-list" class="evidence-list"></div>
+            </section>
+
+            <section class="panel">
+              <p class="eyebrow">Exception handling</p>
+              <h2>Clarifications and warnings</h2>
+              <div id="warnings"></div>
+              <ol id="questions" class="question-list"></ol>
+              <div id="analogs" class="analog-list"></div>
+            </section>
+          </div>
+
+          <section class="panel draft-panel">
+            <div class="section-heading"><div><p class="eyebrow">Structured output</p><h2>Draft client brief</h2></div><span class="helper">Edit any field before approval</span></div>
+            <div id="field-list" class="field-list"></div>
+          </section>
+
+          <section class="approval-panel">
+            <div>
+              <p class="eyebrow">Human control</p>
+              <h2>Review before export</h2>
+              <label class="approval-check"><input id="approval" type="checkbox" /> I reviewed the evidence, resolved the draft as needed, and approve export.</label>
+            </div>
+            <div class="export-actions">
+              <button id="export-md" class="secondary-button" type="button">Export Markdown</button>
+              <button id="export-json" class="secondary-button" type="button">Export JSON</button>
+            </div>
+          </section>
+        </section>
+      </section>
+
+      <section class="method-strip">
+        <p><strong>Offline by design.</strong> This version uses deterministic TF-IDF retrieval and evidence assembly, so it runs without a paid model API. An approved model can be added behind the drafting boundary without changing validation, evidence, or approval controls.</p>
+      </section>
+    </main>
+
+    <footer>Built as a sanitized portfolio demonstration. No Visa systems, branding, documents, or data are used.</footer>
+    <script src="/app.js" defer></script>
+  </body>
+</html>

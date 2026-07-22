@@ -1,0 +1,2 @@
+# No third-party packages are required for the offline demonstration.
+# Verified locally with Python 3.9.6.
